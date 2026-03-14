@@ -1,8 +1,14 @@
+# Coworking Space Management System
+
+Database design project for the management of a coworking space.
+
+---
+
 # Sistema Spazio Coworking
 
-## Overview
+## Panoramica
 
-Questo progetto rappresenta la progettazione di un sistema informativo per la gestione di uno spazio di coworking.
+Questo progetto rappresenta la **progettazione di un sistema informativo** per la gestione di uno spazio di coworking.
 
 Il sistema permette di gestire:
 
@@ -12,41 +18,66 @@ Il sistema permette di gestire:
 - accessi allo spazio di lavoro
 - utilizzo dei servizi e relativi costi
 
-L'obiettivo del progetto è modellare il dominio del problema e progettare una base di dati relazionale coerente per la gestione delle attività di uno spazio di coworking.
+L'obiettivo del progetto è **modellare il dominio del problema e progettare una base di dati relazionale coerente** per la gestione delle attività di uno spazio di coworking.
 
 ---
 
-# System Architecture
+# Processo di progettazione
 
-Il progetto segue le principali fasi di progettazione di un sistema informativo:
+Il progetto segue le principali fasi di progettazione di un sistema informativo e di una base di dati.
 
-## Analisi dei requisiti
-Definizione delle funzionalità richieste dal sistema e delle informazioni da gestire.
+## 1. Analisi dei requisiti
 
-## Modellazione concettuale
-Creazione di un **diagramma UML delle classi** per rappresentare entità, relazioni e vincoli del dominio.
+Definizione del problema e delle funzionalità richieste dal sistema.
 
-## Progettazione per basi di dati
-Ristrutturazione del modello concettuale e traduzione in **schema relazionale**.
+Il testo originale utilizzato come punto di partenza per il progetto è disponibile nel file:
+
+`problem_description.md`
 
 ---
 
-# Data Model
+## 2. Modellazione concettuale
+
+Il dominio del problema è stato modellato tramite un **diagramma UML delle classi**, che rappresenta le principali entità del sistema, le relazioni tra di esse e alcuni vincoli.
+
+![Diagramma UML Concettuale](uml_class_diagram.png)
+
+---
+
+## 3. Ristrutturazione per basi di dati
+
+Il modello concettuale è stato successivamente **ristrutturato per la progettazione della base di dati**, introducendo identificatori e adattando il modello alla futura implementazione relazionale.
+
+![Diagramma UML ristrutturato per BD](uml_restructured_for_database.png)
+
+---
+
+## 4. Schema relazionale
+
+Il modello finale è stato tradotto in **schema relazionale**, implementato nel file:
+
+`database_schema.sql`
+
+---
+
+# Modello dei dati
 
 Il modello dati include le principali entità del sistema:
 
-- **Utente** – persona che utilizza lo spazio di coworking  
-- **Cliente** – soggetto che sottoscrive un abbonamento (persona fisica o impresa)  
-- **Abbonamento** – contratto che consente l’accesso allo spazio  
-- **TipoAbbonamento** – definisce durata, prezzo e numero massimo di utenti  
-- **Postazione** – postazione di lavoro assegnata a un utente  
-- **Servizio** – servizi disponibili nello spazio (es. sala riunioni, stampante)  
-- **UsoServizio** – utilizzo di un servizio da parte di un utente  
-- **AccessoSpazio** – registrazione degli ingressi e delle uscite dallo spazio.
+| Entità | Descrizione |
+|------|-------------|
+| **Utente** | Persona che utilizza lo spazio di coworking |
+| **Cliente** | Soggetto che sottoscrive un abbonamento (persona fisica o impresa) |
+| **Abbonamento** | Contratto che consente l’accesso allo spazio |
+| **TipoAbbonamento** | Definisce durata, prezzo e numero massimo di utenti |
+| **Postazione** | Postazione di lavoro assegnata a un utente |
+| **Servizio** | Servizi disponibili nello spazio (es. sala riunioni, stampante) |
+| **UsoServizio** | Utilizzo di un servizio da parte di un utente |
+| **AccessoSpazio** | Registrazione degli ingressi e delle uscite |
 
 ---
 
-# Key Features
+# Funzionalità principali
 
 Il sistema consente di:
 
@@ -54,19 +85,37 @@ Il sistema consente di:
 - gestire abbonamenti e tipologie di tariffa
 - registrare accessi e uscite degli utenti
 - monitorare l’utilizzo dei servizi
-- calcolare statistiche sull’utilizzo dello spazio e dei servizi.
+- calcolare statistiche sull’utilizzo dello spazio e dei servizi
 
 ---
 
-# Tecnologie utilizzate
+# Struttura del repository
 
-- UML
-- progettazione di basi di dati
+```text
+Sistema_Spazio_Coworking
+│
+├── README.md
+├── problem_description.md
+├── functional_specifications.pdf
+├── database_schema.sql
+│
+├── uml_class_diagram.png
+└── uml_restructured_for_database.png
+```
+---
+
+# Tecnologie e concetti utilizzati
+
+Il progetto si concentra principalmente sulla **progettazione di sistemi informativi e basi di dati**, utilizzando:
+
+- UML (Unified Modeling Language)
+- modellazione concettuale
+- ristrutturazione per basi di dati
+- progettazione di schema relazionale
 - SQL
-- modellazione di sistemi informativi
 
 ---
 
 # Contesto del progetto
 
-Progetto sviluppato come esercizio accademico nell’ambito dello studio di **progettazione di sistemi informativi e basi di dati**.
+Progetto sviluppato come esercizio accademico nell’ambito dello studio della **progettazione di basi di dati e sistemi informativi**.

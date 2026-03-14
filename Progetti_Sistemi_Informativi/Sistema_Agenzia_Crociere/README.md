@@ -1,8 +1,14 @@
+# Cruise Agency Information System
+
+Database design project for the management of a cruise travel agency.
+
+---
+
 # Sistema Agenzia Crociere
 
-## Descrizione
+## Panoramica
 
-Questo progetto rappresenta la progettazione di un sistema informativo per la gestione di una agenzia turistica che organizza crociere.
+Questo progetto rappresenta la **progettazione di un sistema informativo per la gestione di una agenzia turistica che organizza crociere**.
 
 Il sistema permette di gestire:
 
@@ -12,15 +18,23 @@ Il sistema permette di gestire:
 - clienti e prenotazioni  
 - attività e luoghi visitabili durante le escursioni  
 
-Il progetto è stato sviluppato partendo dalla specifica dei requisiti e dalla modellazione UML, fino alla traduzione in schema relazionale per basi di dati.
+Il progetto è stato sviluppato partendo dalla **specifica dei requisiti**, passando per la **modellazione UML**, fino alla **traduzione in schema relazionale SQL**.
 
 ---
 
-# Fasi principali del progetto
+# Processo di progettazione
+
+Il sistema è stato progettato seguendo le principali fasi della progettazione di basi di dati.
 
 ## 1. Analisi dei requisiti
 
-Studio del problema e identificazione delle principali entità del sistema, tra cui:
+Studio del problema e identificazione delle principali entità del sistema.
+
+Il testo originale della specifica è disponibile nel file:
+
+`problem_description.md`
+
+Le principali entità individuate sono:
 
 - Crociera  
 - Nave  
@@ -31,42 +45,84 @@ Studio del problema e identificazione delle principali entità del sistema, tra 
 - Destinazione  
 - PostoEscursione  
 
-Sono state inoltre definite le principali funzionalità richieste dal sistema, come la gestione delle prenotazioni e il calcolo di statistiche.
+Sono state inoltre definite le funzionalità richieste dal sistema, come la gestione delle prenotazioni e il calcolo di statistiche.
 
 ---
 
 ## 2. Modellazione concettuale
 
-Realizzazione del diagramma UML delle classi per rappresentare:
+Il dominio del problema è stato modellato tramite un **diagramma UML delle classi** che rappresenta:
 
-- entità del dominio  
-- attributi  
-- associazioni tra le classi  
-- vincoli del sistema  
+- entità del dominio
+- attributi
+- associazioni tra le classi
+- vincoli del sistema
 
-È stato inoltre definito il diagramma UML degli use case per descrivere le principali operazioni del sistema.
+### Diagramma UML concettuale
+
+![Diagramma UML concettuale](uml_class_diagram.png)
 
 ---
 
 ## 3. Ristrutturazione per basi di dati
 
-Il modello concettuale è stato adattato per la progettazione del database tramite:
+Il modello concettuale è stato ristrutturato per la progettazione della base di dati.
 
-- ristrutturazione del diagramma UML  
-- definizione dei vincoli di integrità  
-- preparazione dello schema per la traduzione relazionale.
+Le principali attività svolte sono:
+
+- ristrutturazione del diagramma UML
+- definizione dei vincoli di integrità
+- introduzione degli identificatori
+- adattamento del modello alla traduzione relazionale
+
+### Diagramma UML ristrutturato
+
+![Diagramma UML ristrutturato](uml_restructured_for_database.png)
 
 ---
 
 ## 4. Traduzione in schema relazionale
 
-Il modello è stato trasformato in schema relazionale SQL, definendo:
+Il modello finale è stato trasformato in **schema relazionale SQL**.
 
-- tabelle
+Lo schema include:
+
+- definizione delle tabelle
 - chiavi primarie
 - chiavi esterne
 - domini e tipi personalizzati
-- vincoli di integrità.
+- vincoli di integrità
+
+File principale:
+
+`database_schema.sql`
+
+---
+
+# Dataset di esempio
+
+Il repository include anche un file SQL con **dati di esempio** per popolare il database e testare il sistema.
+
+File:
+
+`dati.sql`
+
+Questo file contiene:
+
+- nazioni, regioni e città
+- clienti
+- navi
+- itinerari e destinazioni
+- luoghi visitabili durante le escursioni
+- scalI delle crociere
+- crociere pianificate
+- prenotazioni effettuate dai clienti
+
+I dati sono utili per:
+
+- testare lo schema del database
+- simulare prenotazioni
+- verificare le query statistiche richieste dal sistema.
 
 ---
 
@@ -81,14 +137,37 @@ Il sistema supporta diverse operazioni, tra cui:
 
 ---
 
-# Tecnologie utilizzate
+# Struttura del repository
+```text
+Sistema_Agenzia_Crociere
+│
+├── README.md
+├── problem_description.md
+├── functional_specifications.pdf
+│
+├── database_schema.sql
+├── sample_data.sql
+│
+├── uml_class_diagram.png
+└── uml_restructured_for_database.png
+```
 
-- UML (modellazione concettuale)
-- SQL
+
+---
+
+# Tecnologie e concetti utilizzati
+
+Questo progetto utilizza principalmente concetti di:
+
+- modellazione UML
+- progettazione concettuale
+- ristrutturazione per basi di dati
 - progettazione di basi di dati relazionali
+- SQL
 
 ---
 
 # Contesto del progetto
 
-Progetto sviluppato come esercizio accademico nell’ambito dello studio di progettazione di sistemi informativi e basi di dati.
+Progetto sviluppato come esercizio accademico nell’ambito dello studio di **progettazione di sistemi informativi e basi di dati**.
+

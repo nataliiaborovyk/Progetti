@@ -1,8 +1,14 @@
+# Hospitality Platform for Travelers
+
+Database design project for a platform that allows travelers to request hospitality from other users, inspired by services similar to Couchsurfing.
+
+---
+
 # Sistema Ospitalità tra Viaggiatori
 
-## Overview
+## Panoramica
 
-Questo progetto rappresenta la progettazione di un sistema informativo per una piattaforma web di ospitalità tra viaggiatori, simile a servizi come Couchsurfing.
+Questo progetto rappresenta la progettazione di un **sistema informativo per una piattaforma web di ospitalità tra viaggiatori**, simile a servizi come Couchsurfing.
 
 Il sistema consente agli utenti registrati di offrire ospitalità nella propria abitazione e ai viaggiatori di cercare alloggi disponibili durante i loro viaggi.
 
@@ -14,112 +20,184 @@ La piattaforma permette di:
 - gestire richieste di prenotazione
 - valutare ospitanti e viaggiatori tramite un sistema di feedback
 
-L'obiettivo del progetto è modellare il dominio del problema e progettare una base di dati relazionale coerente e ben strutturata.
+L'obiettivo del progetto è **modellare il dominio del problema e progettare una base di dati relazionale coerente e ben strutturata**.
+
+La descrizione originale del problema è disponibile nel file:
+
+`problem_description.md`
 
 ---
 
-# System Architecture
+# Processo di progettazione
 
-Il progetto segue le principali fasi di progettazione di un sistema informativo:
+Il progetto segue le principali fasi della progettazione di basi di dati.
 
-1. **Analisi dei requisiti**  
-   Definizione delle funzionalità del sistema e delle informazioni da gestire.
+## 1. Analisi dei requisiti
 
-2. **Modellazione concettuale (UML)**  
-   Creazione del diagramma delle classi per rappresentare entità, relazioni e vincoli del dominio.
+Studio della specifica testuale del problema e identificazione delle entità e delle operazioni del sistema.
 
-3. **Ristrutturazione per basi di dati**  
-   Adattamento del modello concettuale per l'implementazione su database relazionale.
+Il sistema deve permettere agli utenti di:
 
-4. **Traduzione in schema relazionale**  
-   Definizione delle tabelle SQL con chiavi primarie, chiavi esterne e vincoli di integrità.
+- offrire ospitalità nella propria abitazione
+- cercare ospitanti disponibili
+- effettuare richieste di prenotazione
+- gestire disponibilità e periodi di chiusura
+- lasciare feedback dopo il soggiorno
 
----
+La descrizione completa del problema è disponibile nel file:
 
-# Data Model
-
-Il modello concettuale è stato progettato utilizzando **diagrammi UML delle classi**.
-
-Le entità principali del sistema sono:
-
-- **Utente** – persona registrata al portale  
-- **Alloggio** – abitazione offerta per ospitalità  
-- **Camera** – stanza dell’alloggio  
-- **Letto** – unità di ospitalità prenotabile  
-- **Prenotazione** – richiesta di soggiorno effettuata da un viaggiatore  
-- **SceltaPosto** – selezione dei letti per una prenotazione  
-
-Il modello include inoltre elementi per gestire la disponibilità degli alloggi:
-
-- **PeriodoChiusura** – periodi in cui l’alloggio non è disponibile  
-- **ChiusuraStraordinaria** – chiusure temporanee dovute a imprevisti.
+`problem_description.md`
 
 ---
 
-# Key Features
+## 2. Modellazione concettuale
 
-Il sistema supporta diverse funzionalità principali:
+Il dominio è stato modellato tramite **diagrammi UML delle classi**.
 
-### Registrazione utenti
-Gli utenti possono registrarsi al portale fornendo informazioni personali e indicando se desiderano offrire ospitalità.
+Il diagramma rappresenta:
 
-### Gestione alloggi
+- entità del sistema
+- attributi
+- relazioni tra le entità
+- vincoli del dominio
+
+### Diagramma UML concettuale
+
+![Diagramma UML concettuale](uml_class_diagram.png)
+
+---
+
+## 3. Ristrutturazione per basi di dati
+
+Il modello concettuale è stato ristrutturato per adattarlo alla progettazione di una base di dati relazionale.
+
+Questa fase include:
+
+- introduzione di identificatori
+- riorganizzazione delle associazioni
+- adattamento del modello alla traduzione relazionale
+
+### Diagramma UML ristrutturato
+
+![Diagramma UML ristrutturato](uml_restructured_for_database.png)
+
+---
+
+## 4. Traduzione in schema relazionale
+
+Il modello finale è stato tradotto in **schema relazionale SQL**.
+
+Lo schema definisce:
+
+- tabelle
+- chiavi primarie
+- chiavi esterne
+- vincoli di integrità
+
+File principale:
+
+`database_schema.sql`
+
+---
+
+# Modello dei dati
+
+Le principali entità del sistema sono:
+
+**Utente**  
+Persona registrata alla piattaforma.
+
+**Alloggio**  
+Abitazione offerta per ospitalità da un utente.
+
+**Camera**  
+Stanza dell’alloggio.
+
+**Letto**  
+Unità prenotabile all’interno di una camera.
+
+**Prenotazione**  
+Richiesta di soggiorno effettuata da un viaggiatore.
+
+**SceltaPosto**  
+Associazione tra prenotazione e posti letto scelti.
+
+Il sistema include inoltre entità per gestire la disponibilità degli alloggi:
+
+- **PeriodoChiusura** – periodi programmati di indisponibilità
+- **ChiusuraStraordinaria** – chiusure temporanee dovute a imprevisti
+
+---
+
+# Funzionalità principali
+
+Il sistema supporta diverse funzionalità.
+
+## Registrazione utenti
+
+Gli utenti possono registrarsi al portale fornendo informazioni personali.
+
+## Gestione alloggi
+
 Gli ospitanti possono:
 
-- registrare il proprio alloggio
+- registrare un alloggio
 - definire camere e posti letto
-- indicare il numero massimo di ospiti
-- gestire periodi di chiusura o indisponibilità.
+- specificare il numero massimo di ospiti
+- indicare periodi di chiusura o indisponibilità
 
-### Ricerca alloggi
+## Ricerca alloggi
+
 I viaggiatori possono cercare ospitanti disponibili:
 
 - in una specifica città
 - in un determinato periodo
-- con un numero sufficiente di posti disponibili.
+- con posti sufficienti disponibili
 
-### Gestione prenotazioni
+## Gestione prenotazioni
+
 I viaggiatori possono inviare richieste di prenotazione che l’ospitante può:
 
-- **accettare**
-- **rifiutare**, indicando una motivazione.
+- accettare
+- rifiutare indicando una motivazione
 
-### Sistema di feedback
+## Sistema di feedback
+
 Dopo il soggiorno:
 
 - il viaggiatore deve valutare l’ospitante
 - l’ospitante può valutare il viaggiatore
 
-Questo meccanismo aiuta a garantire affidabilità e sicurezza nella piattaforma.
+Questo meccanismo migliora l'affidabilità e la sicurezza della piattaforma.
 
 ---
 
-# Database Schema
+# Struttura del repository
+```text
+Sistema_Ospitalita_Tra_Viaggiatori
+│
+├── README.md
+├── problem_description.md
+├── functional_specifications.pdf
+│
+├── database_schema.sql
+│
+├── uml_class_diagram.png
+└── uml_restructured_for_database.png
+```
 
-Il database relazionale include tabelle per rappresentare:
-
-- utenti
-- alloggi
-- camere
-- letti
-- prenotazioni
-- periodi di chiusura
-- valutazioni
-
-Lo schema include inoltre diversi **vincoli di integrità** per garantire la coerenza dei dati, ad esempio:
-
-- prenotazioni non sovrapposte per lo stesso utente
-- numero di ospiti non superiore ai posti disponibili
-- prenotazioni valide solo per periodi disponibili
-- assegnazione dei letti coerente con l’alloggio.
 
 ---
 
-# Tecnologie utilizzate
+# Tecnologie e concetti utilizzati
 
-- UML (modellazione concettuale)
-- SQL
+Questo progetto utilizza principalmente concetti di:
+
+- modellazione UML
+- progettazione concettuale
+- ristrutturazione per basi di dati
 - progettazione di basi di dati relazionali
+- SQL
 
 ---
 
